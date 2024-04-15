@@ -1,0 +1,38 @@
+.img1{
+    width: 421px;
+    height: 237px;
+}
+.section1{
+    margin-top:5%;
+}
+.section2{
+    margin-top:10%;
+    margin-bottom:10%;
+
+}
+.btn-primary{
+    background-color:#00529B;
+}
+
+
+/* Hide the default file input */
+input[type="file"] {
+    display: none;
+  }
+  
+  /* Style the label to look like a button */
+  .custom-file-upload {
+    display: inline-block;
+    padding: 8px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #00529B; /* Blue color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .custom-file-upload:hover {
+    background-color: #00529B; /* Darker blue color on hover */
+  }
+  

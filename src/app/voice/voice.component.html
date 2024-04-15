@@ -1,0 +1,63 @@
+<!-- <div #waveform></div> -->
+<app-nav></app-nav>
+
+<div class="container p-4">
+    <h3 id="title" (click)="startPlayback()">TQ voice assistant</h3>
+ 
+    <audio *ngIf="recordingUrl" #audioPlayer autoplay >
+        <source src="{{recordingUrl}}" type="audio/wav">
+        <!-- <source src="assets/audio2.wav" type="audio/wav"> -->
+
+        Your browser does not support the audio element.
+      </audio>
+      
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="assets/Lucia.jpeg" *ngIf="assistant=='lucia'" id="imgAI" height="230" class="rounded-circle shadow-5" alt="Video Thumbnail"/> 
+                    <img src="assets/Olivia.jpeg" *ngIf="assistant=='olivia'" id="imgAI" height="230" class="rounded-circle shadow-5" alt="Video Thumbnail"/> 
+                    <img src="assets/Shane.jpeg" *ngIf="assistant=='shane'" id="imgAI" height="230" class="rounded-circle shadow-5" alt="Video Thumbnail"/>    
+                </div>
+               
+                <div class="col-md-6">
+                  
+                    <p class="info"  *ngIf="showStatus" style=" margin-top:54%;" >Call is {{status}}...</p>
+                  
+                    <canvas style=" margin-top:37%;"  #audioVisualizer></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-1" style="padding:4%" >
+            <div class="vertical-line" ></div> <!-- Vertical line -->
+            
+          </div>
+        <div class="col-md-4">
+            <h5 class="title mb-4">Call Agenda</h5>
+            <ul id="agendaList">
+                <li *ngFor="let item of values" class="mb-4" [style.color]="item.color">{{ item.value }}</li>
+              </ul>
+        </div>
+    </div>
+
+    <div class="row" style="padding-top:8%;">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <p id="subtitle" class="fw-bolder">Client Information</p>
+                    <p>Name :  Steve Mutua</p>
+                    <p>Gender :  Male</p>
+                    <p>Age :  29</p>
+
+                </div>
+                <div class="col-md-6">
+                    <p id="subtitle" class="fw-bolder">Product Summary</p>
+                    <p>Auto insurance policy</p>
+                    <p>Policy renewal for a 2020 Toyota Camry </p>
+                    <p>0 claims since policy started</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+</div>

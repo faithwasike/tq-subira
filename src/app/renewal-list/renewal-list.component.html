@@ -1,0 +1,45 @@
+<app-nav></app-nav>
+<div class="container">
+    <h3>Renewal Due</h3>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th>
+                <div class="form-check mt-4">
+                    <input type="checkbox" class="form-check-input"  id="checkbox" (change)="selectAll($event)">      
+                </div>
+                
+              </th>
+      
+            <th scope="col">Name</th>
+            <th scope="col">Policy Number</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Renewal date</th>
+            <th scope="col">Call status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tableData;let i = index">
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input"  [checked]="selectedItems.has(item)" (change)="toggleSelection($event, item)">      
+                </div>
+               
+            </td>
+            <td>{{item['Full Name']}}</td>
+            <td>{{item['Policy Number']}}</td>
+            <td>{{item['Phone Number']}}</td>
+            <td>{{item['Email Address']}}</td>
+            <td>{{item['Renewal Date']}}</td>
+            <td>{{status}}</td>
+                <td id="btnRow">
+                        <button type="button" class="btn btn-success" *ngIf="!isRowClicked(i)" (click)="toggleRowClick(i)">Schedule Call</button> 
+                        <button type="button" class="btn btn-secondary" *ngIf="isRowClicked(i)" (click)="toggleRowClick(i)">Call Log</button> 
+                </td>
+          </tr>
+            
+        </tbody>
+      </table>
+</div>

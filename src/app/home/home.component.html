@@ -1,0 +1,159 @@
+<app-nav></app-nav>
+
+
+<div class="container p-4" >
+    <div class="row mt-4">
+        <div class="col-md-5">
+            <div class="card" >
+              
+                <!-- <img src="assets/videoThumbnail.jpg"  class="rounded-4" alt="Video Thumbnail"/> -->
+                <video  #videoPlayer  controls class="rounded-4">
+                    <source src="assets/0409.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+              </div>
+        </div>
+        <div class="col-md-7" style="padding-left: 2%;">
+            <h3>Welcome to TQ Subira.</h3>
+            <p class="mt-4"  style="padding-top:5%;font-size: 18px;">With TQ Subira, you can interact naturally using your voice and your assistant is always ready to assist you with your insurance needs.</p>
+        </div>
+        <div *ngIf="loading"> <div
+            *ngFor="let version of versions"
+            class="pulse-loader"
+            [style.margin]="'70px auto'"  
+            [style.width]="version.width"
+            [style.height]="version.height"
+            [style.color]="version.color">
+            <div></div>
+            <div></div>
+            <div></div>
+            </div> </div>
+            
+            
+        <div class="row mt-4" style="padding-top: 3%;">
+            <h3 class="mb-4 text-center">Explore agents by expertise</h3>
+            <ul class="nav nav-pills mb-4">
+                <li class="nav-item ml-4">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">All</button>
+                </li>
+            
+                <li class="nav-item">
+                    <button class="nav-link" id="pills-quote-tab" data-bs-toggle="pill" data-bs-target="#pills-quote" type="button" role="tab" aria-controls="pills-quote" aria-selected="false">Quote</button>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Claim</a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="pills-renewal-tab" data-bs-toggle="pill" data-bs-target="#pills-renewal" type="button" role="tab" aria-controls="pills-renewal" aria-selected="false">Renewal</button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Policy Management</a>
+                  </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="row">
+                        <div class="col-6 col-sm-4" *ngFor="let assistant of assistantList">
+                            <h5>{{assistant.title}}</h5>  
+                                <img  src="assets/{{assistant.name}}.jpeg" id="imgAI" class="rounded-8 shadow-5" alt="Video Thumbnail"/>
+                                 
+                            <div  >     
+                            <p id="name" class="fs-5 text mt-4">{{assistant.name}}</p>
+                        </div>  
+                          
+                            <div id="funclist" *ngIf="assistant.description.includes('\n')">
+                                <p *ngFor="let line of assistant.description.split('\n')">{{ line }}</p>
+                            </div>
+                           
+                            <button type="button" class="btn btn-primary" (click)="assignAssistant(assistant.id)" data-bs-toggle="modal" data-bs-target="#detailsModal" >Try Now</button>
+                       
+                        </div>
+                    </div>
+                  
+                </div>
+
+                <div class="tab-pane fade" id="pills-quote" role="tabpanel" aria-labelledby="pills-quote-tab">
+                    <div class="row">
+                        <div *ngFor="let assistant of assistantList">
+                            <div class="col-6 col-sm-4"  *ngIf="assistant.agent_type=='gis-quote'">
+                                <h5>{{assistant.title}}</h5>  
+                                <img  src="assets/{{assistant.name}}.png" id="imgAI" class="rounded-8 shadow-5" alt="Video Thumbnail"/>
+                                 
+                                <div  >     
+                                <p id="name" class="fs-5 text mt-4">{{assistant.name}}</p>
+                            </div>  
+                              
+                                <div id="funclist" *ngIf="assistant.description.includes('\n')">
+                                    <p *ngFor="let line of assistant.description.split('\n')">{{ line }}</p>
+                                </div>
+                               
+                                <button type="button" class="btn btn-primary" (click)="assignAssistant(assistant.id)" data-bs-toggle="modal" data-bs-target="#detailsModal" >Try Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-renewal" role="tabpanel" aria-labelledby="pills-renewal-tab">
+                    <div class="row">
+                        <div *ngFor="let assistant of assistantList">
+                            <div class="col-6 col-sm-4"  *ngIf="assistant.agent_type=='gis-renewal'">
+                                <h5>{{assistant.title}}</h5>  
+                                <img  src="assets/{{assistant.name}}.png" id="imgAI" class="rounded-8 shadow-5" alt="Video Thumbnail"/>
+                                 
+                                <div  >     
+                                <p id="name" class="fs-5 text mt-4">{{assistant.name}}</p>
+                            </div>  
+                              
+                                <div id="funclist" *ngIf="assistant.description.includes('\n')">
+                                    <p *ngFor="let line of assistant.description.split('\n')">{{ line }}</p>
+                                </div>
+                               
+                                <button type="button" class="btn btn-primary" (click)="assignAssistant(assistant.id)" data-bs-toggle="modal" data-bs-target="#detailsModal" >Try Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+          
+          </div>
+
+          <!-- Modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mx-4">
+              
+               
+                <!-- <div *ngIf="loading" class="loader">
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
+                    <div class="dot dot3"></div>
+                  </div> -->
+                <form [formGroup]="clientDetailsForm" *ngIf="!loading">
+                    <label for="exampleFormControlInput1" class="form-label">Title</label>
+                    <select class="form-select form-select-sm mb-2" style="width:50%" aria-label=".form-select-sm example">
+                        <option selected></option>
+                        <option value="1">Mr</option>
+                        <option value="2">Ms</option>
+                        <option value="3">Mrs</option>
+                      </select>            
+                      <label for="exampleFormControlInput1" class="form-label">Name</label>
+                      <input type="text" class="form-control mb-2"  formControlName="client_name" id="exampleFormControlInput1" >
+                      <label for="exampleFormControlInput1" class="form-label"> Phone Number</label>
+                      <input type="text" class="form-control mb-2" formControlName="phone_number" id="exampleFormControlInput1" placeholder="+254743123654" >
+                </form>
+               
+                </div>
+                
+                
+            <div class="modal-footer border-0">
+         
+            <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" aria-label="Close" (click)="onSubmit()">Submit</button>
+            </div>
+        </div>
+        </div>
+    </div> 
+</div>
+</div>

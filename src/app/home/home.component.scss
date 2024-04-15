@@ -1,0 +1,71 @@
+#content{
+    margin-top: 100%;
+}
+h3,h5{
+    color: black;
+}
+#imgAI{
+width:185px;
+height:185px;
+}
+#name{
+color: black;
+}
+#funclist{
+list-style: none;
+padding-left: 0rem;
+font-size: 18px;
+}
+.btn-primary{
+background-color:#00529B;
+}
+label{
+    color: black;
+}
+
+
+
+  .pulse-loader {
+    display: flex;
+    align-items: center;
+  
+    > div {
+      background-color: currentColor;
+      margin-right: 5%;
+      width: 30%;
+      height: 100%;
+      border-radius: 100%;
+      animation: pulse 1s ease infinite;
+  
+      &:nth-child(2) {
+        animation-delay: 100ms;
+      }
+  
+      &:nth-child(3) {
+        margin-right: 0;
+        animation-delay: 200ms;
+      }
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 60%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  
+    30% {
+      opacity: .1;
+      transform: scale(.01);
+    }
+  }
+  #imgThumbnail{
+    width: 526px;
+    height: 259px;
+  }
+
+  li{
+    padding-right: 3%;
+
+  }
+  

@@ -1,0 +1,69 @@
+#title{
+    color:#00529B
+}
+#imgAI{
+    margin-top: 25%;
+}
+.vertical-line {
+    border-left: 2px solid #ccc; /* Grey border */
+    height: 127%; /* Adjust height as needed */
+}
+#subtitle{
+    font-size:20px;
+    font-weight:28px;
+    color: black;
+}
+.title{
+    color:black;
+    margin-top: 16%;
+}
+.completed {
+    color: blue; /* Change to blue when completed */
+  }
+#agendaList{
+    list-style: none;
+    padding-left: 0rem;
+    font-size: 18px;
+  }
+
+
+  .pulse-loader {
+    display: flex;
+    align-items: center;
+  
+    > div {
+      background-color: currentColor;
+      margin-right: 5%;
+      width: 30%;
+      height: 100%;
+      border-radius: 100%;
+      animation: pulse 1s ease infinite;
+  
+      &:nth-child(2) {
+        animation-delay: 100ms;
+      }
+  
+      &:nth-child(3) {
+        margin-right: 0;
+        animation-delay: 200ms;
+      }
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 60%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  
+    30% {
+      opacity: .1;
+      transform: scale(.01);
+    }
+  }
+  .info{
+    color: #00529B;
+    font-size: 20px;
+  }
+  
+  
